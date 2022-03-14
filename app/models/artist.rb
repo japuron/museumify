@@ -2,13 +2,13 @@ class Artist < ApplicationRecord
   # Direct associations
 
   has_many   :artpieces,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :exhibitions,
-             :through => :artpieces,
-             :source => :museum
+             through: :artpieces,
+             source: :museum
 
   # Validations
 
@@ -17,5 +17,4 @@ class Artist < ApplicationRecord
   def to_s
     name
   end
-
 end

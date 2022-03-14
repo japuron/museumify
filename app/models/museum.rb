@@ -2,13 +2,13 @@ class Museum < ApplicationRecord
   # Direct associations
 
   has_many   :artpieces,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :exhibited_artists,
-             :through => :artpieces,
-             :source => :artist
+             through: :artpieces,
+             source: :artist
 
   # Validations
 
@@ -17,5 +17,4 @@ class Museum < ApplicationRecord
   def to_s
     name
   end
-
 end

@@ -19,5 +19,4 @@ class ArtpieceResource < ApplicationResource
   belongs_to :artist
 
   # Indirect associations
-
 end

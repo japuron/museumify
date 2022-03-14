@@ -13,5 +13,4 @@ class LikeResource < ApplicationResource
   belongs_to :artpiece
 
   # Indirect associations
-
 end

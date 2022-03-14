@@ -6,7 +6,7 @@ class Artpiece < ApplicationRecord
   belongs_to :museum
 
   has_many   :likes,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :artist
 
@@ -19,5 +19,4 @@ class Artpiece < ApplicationRecord
   def to_s
     title
   end
-
 end

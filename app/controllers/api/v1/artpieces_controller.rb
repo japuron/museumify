@@ -13,7 +13,7 @@ class Api::V1::ArtpiecesController < Api::V1::GraphitiController
     artpiece = ArtpieceResource.build(params)
 
     if artpiece.save
-      render jsonapi: artpiece, status: 201
+      render jsonapi: artpiece, status: :created
     else
       render jsonapi_errors: artpiece
     end
@@ -33,7 +33,7 @@ class Api::V1::ArtpiecesController < Api::V1::GraphitiController
     artpiece = ArtpieceResource.find(params)
 
     if artpiece.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: artpiece
     end

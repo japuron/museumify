@@ -1,10 +1,11 @@
 class MuseumsController < ApplicationController
-  before_action :set_museum, only: [:show, :edit, :update, :destroy]
+  before_action :set_museum, only: %i[show edit update destroy]
 
   # GET /museums
   def index
     @q = Museum.ransack(params[:q])
-    @museums = @q.result(:distinct => true).includes(:artpieces, :exhibited_artists).page(params[:page]).per(10)
+    @museums = @q.result(distinct: true).includes(:artpieces,
+                                                  :exhibited_artists).page(params[:page]).per(10)
   end
 
   # GET /museums/1
@@ -18,15 +19,14 @@ class MuseumsController < ApplicationController
   end
 
   # GET /museums/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /museums
   def create
     @museum = Museum.new(museum_params)
 
     if @museum.save
-      redirect_to @museum, notice: 'Museum was successfully created.'
+      redirect_to @museum, notice: "Museum was successfully created."
     else
       render :new
     end
@@ -35,7 +35,7 @@ class MuseumsController < ApplicationController
   # PATCH/PUT /museums/1
   def update
     if @museum.update(museum_params)
-      redirect_to @museum, notice: 'Museum was successfully updated.'
+      redirect_to @museum, notice: "Museum was successfully updated."
     else
       render :edit
     end
@@ -44,17 +44,18 @@ class MuseumsController < ApplicationController
   # DELETE /museums/1
   def destroy
     @museum.destroy
-    redirect_to museums_url, notice: 'Museum was successfully destroyed.'
+    redirect_to museums_url, notice: "Museum was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_museum
-      @museum = Museum.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def museum_params
-      params.require(:museum).permit(:name, :location, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_museum
+    @museum = Museum.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def museum_params
+    params.require(:museum).permit(:name, :location, :description)
+  end
 end

@@ -2,7 +2,7 @@ class Like < ApplicationRecord
   # Direct associations
 
   belongs_to :liker,
-             :class_name => "User"
+             class_name: "User"
 
   belongs_to :artpiece
 
@@ -15,5 +15,4 @@ class Like < ApplicationRecord
   def to_s
     artpiece.to_s
   end
-
 end

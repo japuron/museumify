@@ -1,10 +1,11 @@
 class ArtpiecesController < ApplicationController
-  before_action :set_artpiece, only: [:show, :edit, :update, :destroy]
+  before_action :set_artpiece, only: %i[show edit update destroy]
 
   # GET /artpieces
   def index
     @q = Artpiece.ransack(params[:q])
-    @artpieces = @q.result(:distinct => true).includes(:artist, :likes, :museum).page(params[:page]).per(10)
+    @artpieces = @q.result(distinct: true).includes(:artist, :likes,
+                                                    :museum).page(params[:page]).per(10)
   end
 
   # GET /artpieces/1
@@ -18,17 +19,16 @@ class ArtpiecesController < ApplicationController
   end
 
   # GET /artpieces/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /artpieces
   def create
     @artpiece = Artpiece.new(artpiece_params)
 
     if @artpiece.save
-      message = 'Artpiece was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Artpiece was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @artpiece, notice: message
       end
@@ -40,7 +40,7 @@ class ArtpiecesController < ApplicationController
   # PATCH/PUT /artpieces/1
   def update
     if @artpiece.update(artpiece_params)
-      redirect_to @artpiece, notice: 'Artpiece was successfully updated.'
+      redirect_to @artpiece, notice: "Artpiece was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,23 @@ class ArtpiecesController < ApplicationController
   def destroy
     @artpiece.destroy
     message = "Artpiece was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to artpieces_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artpiece
-      @artpiece = Artpiece.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def artpiece_params
-      params.require(:artpiece).permit(:title, :year, :artistic_movement, :description, :image, :artist_id, :museum_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artpiece
+    @artpiece = Artpiece.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def artpiece_params
+    params.require(:artpiece).permit(:title, :year, :artistic_movement,
+                                     :description, :image, :artist_id, :museum_id)
+  end
 end

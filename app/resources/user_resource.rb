@@ -11,5 +11,4 @@ class UserResource < ApplicationResource
              foreign_key: :liker_id
 
   # Indirect associations
-
 end
