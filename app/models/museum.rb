@@ -6,6 +6,10 @@ class Museum < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :exhibited_artists,
+             :through => :artpieces,
+             :source => :artist
+
   # Validations
 
   # Scopes

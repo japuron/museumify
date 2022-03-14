@@ -10,6 +10,8 @@ RSpec.describe Museum, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:exhibited_artists) }
+
     end
 
     describe "Validations" do

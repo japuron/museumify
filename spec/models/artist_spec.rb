@@ -10,6 +10,8 @@ RSpec.describe Artist, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:exhibitions) }
+
     end
 
     describe "Validations" do
