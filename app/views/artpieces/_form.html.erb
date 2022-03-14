@@ -1,0 +1,187 @@
+<% was_validated = artpiece.errors.any? %>
+
+<%= form_with(model: artpiece, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for title start -->
+  <div class="form-group">
+    <% title_class = "form-control" %>
+    <% title_was_invalid = artpiece.errors.include?(:title) %>
+
+    <% if was_validated %>
+      <% if title_was_invalid %>
+        <% title_class << " is-invalid" %>
+      <% else %>
+        <% title_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :title %>
+    <!-- Input for title start -->
+    <%= f.text_field :title, class: title_class, placeholder: "Enter title" %>
+    <!-- Input for title end -->
+    <% if title_was_invalid %>
+      <% artpiece.errors.full_messages_for(:title).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for title end -->
+  <!-- Label and input for year start -->
+  <div class="form-group">
+    <% year_class = "form-control" %>
+    <% year_was_invalid = artpiece.errors.include?(:year) %>
+
+    <% if was_validated %>
+      <% if year_was_invalid %>
+        <% year_class << " is-invalid" %>
+      <% else %>
+        <% year_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :year %>
+    <!-- Input for year start -->
+    <%= f.number_field :year, class: year_class, placeholder: "Enter year" %>
+    <!-- Input for year end -->
+    <% if year_was_invalid %>
+      <% artpiece.errors.full_messages_for(:year).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for year end -->
+  <!-- Label and input for artistic_movement start -->
+  <div class="form-group">
+    <% artistic_movement_class = "form-control" %>
+    <% artistic_movement_was_invalid = artpiece.errors.include?(:artistic_movement) %>
+
+    <% if was_validated %>
+      <% if artistic_movement_was_invalid %>
+        <% artistic_movement_class << " is-invalid" %>
+      <% else %>
+        <% artistic_movement_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :artistic_movement %>
+    <!-- Input for artistic_movement start -->
+    <%= f.text_field :artistic_movement, class: artistic_movement_class, placeholder: "Enter artistic movement" %>
+    <!-- Input for artistic_movement end -->
+    <% if artistic_movement_was_invalid %>
+      <% artpiece.errors.full_messages_for(:artistic_movement).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for artistic_movement end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = artpiece.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% artpiece.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <!-- Label and input for image start -->
+  <div class="form-group">
+    <% image_class = "form-control" %>
+    <% image_was_invalid = artpiece.errors.include?(:image) %>
+
+    <% if was_validated %>
+      <% if image_was_invalid %>
+        <% image_class << " is-invalid" %>
+      <% else %>
+        <% image_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :image %>
+    <!-- Input for image start -->
+    <%= f.text_field :image, class: image_class, placeholder: "Enter image" %>
+    <!-- Input for image end -->
+    <% if image_was_invalid %>
+      <% artpiece.errors.full_messages_for(:image).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for image end -->
+  <!-- Label and input for artist_id start -->
+  <div class="form-group">
+    <% artist_class = "form-control" %>
+    <% artist_was_invalid = artpiece.errors.include?(:artist) %>
+
+    <% if was_validated %>
+      <% if artist_was_invalid %>
+        <% artist_class << " is-invalid" %>
+      <% else %>
+        <% artist_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :artist_id %>
+    <!-- Input for artist_id start -->
+    <%= f.number_field :artist_id, class: artist_class, placeholder: "Enter artist" %>
+    <!-- Input for artist_id end -->
+    <% if artist_was_invalid %>
+      <% artpiece.errors.full_messages_for(:artist).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for artist_id end -->
+  <!-- Label and input for museum_id start -->
+  <div class="form-group">
+    <% museum_class = "form-control" %>
+    <% museum_was_invalid = artpiece.errors.include?(:museum) %>
+
+    <% if was_validated %>
+      <% if museum_was_invalid %>
+        <% museum_class << " is-invalid" %>
+      <% else %>
+        <% museum_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :museum_id %>
+    <!-- Input for museum_id start -->
+    <%= f.number_field :museum_id, class: museum_class, placeholder: "Enter museum" %>
+    <!-- Input for museum_id end -->
+    <% if museum_was_invalid %>
+      <% artpiece.errors.full_messages_for(:museum).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for museum_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
