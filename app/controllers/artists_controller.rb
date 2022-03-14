@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1
   def show
+    @artpiece = Artpiece.new
   end
 
   # GET /artists/new

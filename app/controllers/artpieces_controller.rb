@@ -8,6 +8,7 @@ class ArtpiecesController < ApplicationController
 
   # GET /artpieces/1
   def show
+    @like = Like.new
   end
 
   # GET /artpieces/new
@@ -24,7 +25,12 @@ class ArtpiecesController < ApplicationController
     @artpiece = Artpiece.new(artpiece_params)
 
     if @artpiece.save
-      redirect_to @artpiece, notice: 'Artpiece was successfully created.'
+      message = 'Artpiece was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @artpiece, notice: message
+      end
     else
       render :new
     end
