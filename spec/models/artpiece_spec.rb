@@ -4,6 +4,8 @@ RSpec.describe Artpiece, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:museum) }
+
     it { should have_many(:likes) }
 
     it { should belong_to(:artist) }

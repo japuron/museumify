@@ -1,6 +1,8 @@
 class Artpiece < ApplicationRecord
   # Direct associations
 
+  belongs_to :museum
+
   has_many   :likes,
              :dependent => :destroy
 
