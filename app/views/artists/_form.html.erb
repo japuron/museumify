@@ -1,7 +1,6 @@
 <% was_validated = artist.errors.any? %>
 
 <%= form_with(model: artist, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for name start -->
   <div class="form-group">
     <% name_class = "form-control" %>
     <% name_was_invalid = artist.errors.include?(:name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
-    <!-- Input for name end -->
     <% if name_was_invalid %>
       <% artist.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for name end -->
-  <!-- Label and input for dob_year start -->
   <div class="form-group">
     <% dob_year_class = "form-control" %>
     <% dob_year_was_invalid = artist.errors.include?(:dob_year) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :dob_year %>
-    <!-- Input for dob_year start -->
     <%= f.number_field :dob_year, class: dob_year_class, placeholder: "Enter dob year" %>
-    <!-- Input for dob_year end -->
     <% if dob_year_was_invalid %>
       <% artist.errors.full_messages_for(:dob_year).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for dob_year end -->
-  <!-- Label and input for biography start -->
   <div class="form-group">
     <% biography_class = "form-control" %>
     <% biography_was_invalid = artist.errors.include?(:biography) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :biography %>
-    <!-- Input for biography start -->
     <%= f.text_field :biography, class: biography_class, placeholder: "Enter biography" %>
-    <!-- Input for biography end -->
     <% if biography_was_invalid %>
       <% artist.errors.full_messages_for(:biography).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for biography end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

@@ -6,49 +6,35 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Title</dt>
-      <!-- Display title start -->
       <dd><%= artpiece.title %></dd>
-      <!-- Display title end -->
 
       <dt>Year</dt>
-      <!-- Display year start -->
       <dd><%= artpiece.year %></dd>
-      <!-- Display year end -->
 
       <dt>Artistic movement</dt>
-      <!-- Display artistic_movement start -->
       <dd><%= artpiece.artistic_movement %></dd>
-      <!-- Display artistic_movement end -->
 
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= artpiece.description %></dd>
-      <!-- Display description end -->
 
       <dt>Image</dt>
-      <!-- Display image start -->
       <dd>
         <%= cl_image_tag @artpiece.image, class: "img-fluid" %>
       </dd>
-      <!-- Display image end -->
 
       <dt>Artist</dt>
-      <!-- Display artist_id start -->
       <dd>
         <% if @artpiece.artist.present? %>
           <%= link_to artpiece.artist, artpiece.artist %>
         <% end %>
       </dd>
-      <!-- Display artist_id end -->
 
       <dt>Museum</dt>
-      <!-- Display museum_id start -->
       <dd>
         <% if @artpiece.museum.present? %>
           <%= link_to artpiece.museum, artpiece.museum %>
         <% end %>
       </dd>
-      <!-- Display museum_id end -->
 
     </dl>
 
@@ -57,21 +43,17 @@
         <%= link_to_show_or_back artpiece, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link artpiece start -->
       <div class="col">
         <%= link_to edit_artpiece_url(artpiece), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link artpiece end -->
 
-      <!-- Delete link artpiece start -->
       <div class="col">
         <%= link_to artpiece, method: :delete, data: { confirm: "Do you really want to delete this artpiece?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link artpiece end -->
     </div>
   </div>
 
