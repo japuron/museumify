@@ -1,6 +1,9 @@
 class Like < ApplicationRecord
   # Direct associations
 
+  belongs_to :liker,
+             :class_name => "User"
+
   belongs_to :artpiece
 
   # Indirect associations
