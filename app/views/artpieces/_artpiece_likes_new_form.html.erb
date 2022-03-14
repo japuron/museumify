@@ -9,13 +9,9 @@
   <!-- Label and input for artpiece_id end -->
 
   <!-- Label and input for liker_id start -->
-  <div class="form-group">
-    <%= f.label :liker_id %>
-
-    <!-- Input for liker_id start -->
-    <%= f.collection_select :liker_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for liker_id end -->
-  </div>
+  <!-- Input for "liker_id" start -->
+  <%= f.hidden_field :liker_id, value: current_user.id %>
+  <!-- Input for "liker_id" end -->
   <!-- Label and input for liker_id end -->
 
   <%= f.submit "Create like", class: "btn btn-block btn-outline-secondary" %>
