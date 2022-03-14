@@ -7,6 +7,9 @@ class LikeResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :liker,
+             resource: UserResource
+
   belongs_to :artpiece
 
   # Indirect associations
