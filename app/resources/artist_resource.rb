@@ -12,4 +12,7 @@ class ArtistResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :exhibitions,
+               resource: MuseumResource
+
 end
