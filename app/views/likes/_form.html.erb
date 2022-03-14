@@ -16,7 +16,7 @@
 
     <%= f.label :artpiece_id %>
     <!-- Input for artpiece_id start -->
-    <%= f.number_field :artpiece_id, class: artpiece_class, placeholder: "Enter artpiece" %>
+    <%= f.collection_select :artpiece_id, Artpiece.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for artpiece_id end -->
     <% if artpiece_was_invalid %>
       <% like.errors.full_messages_for(:artpiece).each do |message| %>
