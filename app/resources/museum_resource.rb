@@ -8,6 +8,8 @@ class MuseumResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :artpieces
+
   # Indirect associations
 
 end

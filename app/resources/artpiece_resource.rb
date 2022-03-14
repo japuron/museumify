@@ -12,6 +12,8 @@ class ArtpieceResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :museum
+
   has_many   :likes
 
   belongs_to :artist
