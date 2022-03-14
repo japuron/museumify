@@ -1,6 +1,8 @@
 class Artpiece < ApplicationRecord
   # Direct associations
 
+  belongs_to :artist
+
   # Indirect associations
 
   # Validations
