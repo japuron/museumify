@@ -34,12 +34,20 @@
 
       <dt>Artist</dt>
       <!-- Display artist_id start -->
-      <dd><%= artpiece.artist_id %></dd>
+      <dd>
+        <% if @artpiece.artist.present? %>
+          <%= link_to artpiece.artist, artpiece.artist %>
+        <% end %>
+      </dd>
       <!-- Display artist_id end -->
 
       <dt>Museum</dt>
       <!-- Display museum_id start -->
-      <dd><%= artpiece.museum_id %></dd>
+      <dd>
+        <% if @artpiece.museum.present? %>
+          <%= link_to artpiece.museum, artpiece.museum %>
+        <% end %>
+      </dd>
       <!-- Display museum_id end -->
 
     </dl>
