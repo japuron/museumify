@@ -172,7 +172,7 @@
 
     <%= f.label :museum_id %>
     <!-- Input for museum_id start -->
-    <%= f.number_field :museum_id, class: museum_class, placeholder: "Enter museum" %>
+    <%= f.collection_select :museum_id, Museum.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for museum_id end -->
     <% if museum_was_invalid %>
       <% artpiece.errors.full_messages_for(:museum).each do |message| %>

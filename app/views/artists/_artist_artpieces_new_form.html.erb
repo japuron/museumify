@@ -63,7 +63,7 @@
     <%= f.label :museum_id %>
 
     <!-- Input for museum_id start -->
-    <%= f.text_field :museum_id, class: "form-control" %>
+    <%= f.collection_select :museum_id, Museum.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for museum_id end -->
   </div>
   <!-- Label and input for museum_id end -->
