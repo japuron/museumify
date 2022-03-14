@@ -3,7 +3,8 @@ class ArtistsController < ApplicationController
 
   # GET /artists
   def index
-    @artists = Artist.page(params[:page]).per(10)
+    @q = Artist.ransack(params[:q])
+    @artists = @q.result(:distinct => true).includes(:artpieces, :exhibitions).page(params[:page]).per(10)
   end
 
   # GET /artists/1

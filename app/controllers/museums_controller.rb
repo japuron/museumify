@@ -3,7 +3,8 @@ class MuseumsController < ApplicationController
 
   # GET /museums
   def index
-    @museums = Museum.page(params[:page]).per(10)
+    @q = Museum.ransack(params[:q])
+    @museums = @q.result(:distinct => true).includes(:artpieces, :exhibited_artists).page(params[:page]).per(10)
   end
 
   # GET /museums/1
