@@ -1,0 +1,57 @@
+<% was_validated = like.errors.any? %>
+
+<%= form_with(model: like, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for artpiece_id start -->
+  <div class="form-group">
+    <% artpiece_class = "form-control" %>
+    <% artpiece_was_invalid = like.errors.include?(:artpiece) %>
+
+    <% if was_validated %>
+      <% if artpiece_was_invalid %>
+        <% artpiece_class << " is-invalid" %>
+      <% else %>
+        <% artpiece_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :artpiece_id %>
+    <!-- Input for artpiece_id start -->
+    <%= f.number_field :artpiece_id, class: artpiece_class, placeholder: "Enter artpiece" %>
+    <!-- Input for artpiece_id end -->
+    <% if artpiece_was_invalid %>
+      <% like.errors.full_messages_for(:artpiece).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for artpiece_id end -->
+  <!-- Label and input for liker_id start -->
+  <div class="form-group">
+    <% liker_class = "form-control" %>
+    <% liker_was_invalid = like.errors.include?(:liker) %>
+
+    <% if was_validated %>
+      <% if liker_was_invalid %>
+        <% liker_class << " is-invalid" %>
+      <% else %>
+        <% liker_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :liker_id %>
+    <!-- Input for liker_id start -->
+    <%= f.number_field :liker_id, class: liker_class, placeholder: "Enter liker" %>
+    <!-- Input for liker_id end -->
+    <% if liker_was_invalid %>
+      <% like.errors.full_messages_for(:liker).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for liker_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
