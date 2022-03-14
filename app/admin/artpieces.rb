@@ -1,5 +1,7 @@
 ActiveAdmin.register Artpiece do
 
+ permit_params :title, :year, :artistic_movement, :description, :image, :artist_id, :museum_id
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
