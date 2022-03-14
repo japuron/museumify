@@ -3,7 +3,7 @@ class MuseumsController < ApplicationController
 
   # GET /museums
   def index
-    @museums = Museum.all
+    @museums = Museum.page(params[:page]).per(10)
   end
 
   # GET /museums/1

@@ -3,7 +3,7 @@ class ArtpiecesController < ApplicationController
 
   # GET /artpieces
   def index
-    @artpieces = Artpiece.all
+    @artpieces = Artpiece.page(params[:page]).per(10)
   end
 
   # GET /artpieces/1
