@@ -1,4 +1,6 @@
 class Artpiece < ApplicationRecord
+  mount_base64_uploader :image, ImageUploader
+
   # Direct associations
 
   belongs_to :museum
