@@ -67,5 +67,27 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-group">
+    <% artistpic_class = "form-control" %>
+    <% artistpic_was_invalid = artist.errors.include?(:artistpic) %>
+
+    <% if was_validated %>
+      <% if artistpic_was_invalid %>
+        <% artistpic_class << " is-invalid" %>
+      <% else %>
+        <% artistpic_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :artistpic %>
+    <%= f.file_field :artistpic, class: "form-control" %>
+    <% if artistpic_was_invalid %>
+      <% artist.errors.full_messages_for(:artistpic).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

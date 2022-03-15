@@ -14,6 +14,11 @@
       <dt>Biography</dt>
       <dd><%= artist.biography %></dd>
 
+      <dt>Artistpic</dt>
+      <dd>
+        <%= cl_image_tag @artist.artistpic, class: "img-fluid" %>
+      </dd>
+
     </dl>
 
     <div class="row">

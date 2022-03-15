@@ -5,6 +5,7 @@ class ArtistResource < ApplicationResource
   attribute :name, :string
   attribute :dob_year, :integer
   attribute :biography, :string
+  attribute :artistpic, :string
 
   # Direct associations
 
